@@ -16,7 +16,7 @@ const { ObjectID } = mongodb;
 const User = require('./models/userModel');
 const Chat = require('./models/chatModel');
 
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 const server = http.createServer(app);
 const io = soketio(server);
