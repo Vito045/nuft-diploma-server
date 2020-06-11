@@ -214,14 +214,14 @@ io.on('connection', async (socket) => {
           ''
         );
         await fs.mkdir(
-          path.join(__dirname, `../public/img/chats/${chat._id}`),
+          path.join(__dirname, `/public/img/chats/${chat._id}`),
           (err, data) => {
             if (err) console.log(err);
             else
               fs.writeFile(
                 path.join(
                   __dirname,
-                  `../public/img/chats/${chat._id}/${image.name}`
+                  `/public/img/chats/${chat._id}/${image.name}`
                 ),
                 base64dataImage,
                 // file.base64,
@@ -392,7 +392,7 @@ io.on('connection', async (socket) => {
       const image = data.image;
       if (image) {
         await rimraf(
-          path.join(`../public/img/chats/${chat._id}`),
+          path.join(`/public/img/chats/${chat._id}`),
           async function () {
             console.log('done');
 
@@ -401,14 +401,14 @@ io.on('connection', async (socket) => {
               ''
             );
             await fs.mkdir(
-              path.join(__dirname, `../public/img/chats/${chat._id}`),
+              path.join(__dirname, `/public/img/chats/${chat._id}`),
               (err, data) => {
                 if (err) console.log(err);
                 else
                   fs.writeFile(
                     path.join(
                       __dirname,
-                      `../public/img/chats/${chat._id}/${image.name}`
+                      `/public/img/chats/${chat._id}/${image.name}`
                     ),
                     base64dataImage,
                     // file.base64,
@@ -483,14 +483,14 @@ io.on('connection', async (socket) => {
           ''
         );
         await fs.mkdir(
-          path.join(__dirname, `../public/img/chats/${chat._id}`),
+          path.join(__dirname, `/public/img/chats/${chat._id}`),
           (err, data) => {
             if (err) console.log(err);
             else
               fs.writeFile(
                 path.join(
                   __dirname,
-                  `../public/img/chats/${chat._id}/${image.name}`
+                  `/public/img/chats/${chat._id}/${image.name}`
                 ),
                 base64dataImage,
                 // file.base64,
@@ -541,7 +541,7 @@ io.on('connection', async (socket) => {
       const image = data.image;
       if (image) {
         await rimraf(
-          path.join(`../public/img/users/${user._id}`),
+          path.join(`/public/img/users/${user._id}`),
           async function () {
             console.log('done');
 
@@ -550,14 +550,14 @@ io.on('connection', async (socket) => {
               ''
             );
             await fs.mkdir(
-              path.join(__dirname, `../public/img/users/${user._id}`),
+              path.join(__dirname, `/public/img/users/${user._id}`),
               (err, data) => {
                 if (err) console.log(err);
                 else
                   fs.writeFile(
                     path.join(
                       __dirname,
-                      `../public/img/users/${user._id}/${image.name}`
+                      `/public/img/users/${user._id}/${image.name}`
                     ),
                     base64dataImage,
                     // file.base64,
