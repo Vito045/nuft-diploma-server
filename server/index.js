@@ -18,8 +18,9 @@ const { ObjectID } = mongodb;
 const User = require('./models/userModel');
 const Chat = require('./models/chatModel');
 
-const port = process.env.PORT || 3001;
-const PORT = process.env.PORT || 3001;
+// const port = process.env.PORT || 3001;
+// const PORT = process.env.PORT || 3001;
+const PORT = 3001;
 // const PORT = 3001;
 const INDEX = '/index.html';
 
