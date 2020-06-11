@@ -23,10 +23,10 @@ const PORT = process.env.PORT || 3001;
 // const PORT = 3001;
 const INDEX = '/index.html';
 
-const server = http.createServer(app);
-// const server = express()
-//   .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
-//   .listen(PORT, () => console.log(`Listening on ${PORT}`));
+// const server = http.createServer(app);
+const server = express()
+  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+  .listen(PORT, () => console.log(`Listening on ${PORT}`));
 const io = soketio(server);
 
 const sockets = {};
@@ -59,7 +59,7 @@ io.use(async (socket, next) => {
 
 // io.ori
 // io.set('origins', 'http://yourdomain.com:80');
-// io.origins('*:*');
+io.origins('http://127.0.0.1:3000');
 
 // app.use(
 //   cors({
@@ -598,4 +598,4 @@ io.on('connection', async (socket) => {
   delete sockets[socket.userId];
 });
 
-server.listen(port, () => console.log('Server is up on port', port));
+// server.listen(port, () => console.log('Server is up on port', port));
