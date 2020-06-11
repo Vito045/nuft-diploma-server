@@ -19,14 +19,14 @@ const User = require('./models/userModel');
 const Chat = require('./models/chatModel');
 
 const port = process.env.PORT || 3001;
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 // const PORT = 3001;
 const INDEX = '/index.html';
 
-const server = http.createServer(app);
-// const server = express()
-//   .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
-//   .listen(PORT, () => console.log(`Listening on ${PORT}`));
+// const server = http.createServer(app);
+const server = express()
+  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+  .listen(PORT, () => console.log(`Listening on ${PORT}`));
 const io = soketio(server);
 
 const sockets = {};
@@ -56,6 +56,26 @@ io.use(async (socket, next) => {
   }
   next();
 });
+
+// io.ori
+// io.set('origins', 'http://yourdomain.com:80');
+io.origins('*:*');
+
+// app.use(
+//   cors({
+//     origin: [
+//       'http://127.0.0.1:3000',
+//       'http://127.0.0.1:3001',
+//       'http://127.0.0.1:3002',
+//       'http://localhost:3000',
+//       'http://localhost:3001',
+//       'http://localhost:3002',
+//     ],
+//     credentials: true,
+//   })
+// );
+
+// app.options('*', cors());
 
 io.on('connection', async (socket) => {
   console.log('New WebSocket connection');
@@ -578,4 +598,4 @@ io.on('connection', async (socket) => {
   delete sockets[socket.userId];
 });
 
-server.listen(port, () => console.log('Server is up on port', port));
+// server.listen(port, () => console.log('Server is up on port', port));
