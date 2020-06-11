@@ -1,4 +1,4 @@
-// const express = require('express');
+const express = require('express');
 const http = require('http');
 const app = require('./app');
 const bcrypt = require('bcryptjs');
@@ -11,14 +11,22 @@ const fs = require('fs');
 const path = require('path');
 const rimraf = require('rimraf');
 
+// const INDEX = '/index.html';
+
 const { ObjectID } = mongodb;
 
 const User = require('./models/userModel');
 const Chat = require('./models/chatModel');
 
-const port = process.env.PORT || 3001;
+// const port = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
+// const PORT = 3001;
+const INDEX = '/index.html';
 
-const server = http.createServer(app);
+// const server = http.createServer(app);
+const server = express()
+  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+  .listen(PORT, () => console.log(`Listening on ${PORT}`));
 const io = soketio(server);
 
 const sockets = {};
@@ -570,4 +578,4 @@ io.on('connection', async (socket) => {
   delete sockets[socket.userId];
 });
 
-server.listen(port, () => console.log('Server is up on port', port));
+// server.listen(port, () => console.log('Server is up on port', port));
