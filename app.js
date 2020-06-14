@@ -46,7 +46,7 @@ app.enable('trust proxy');
 
 // 1. Middleware
 // Serving static files
-app.use(express.static(`${path.join(__dirname, '../public')}`));
+// app.use(express.static(`${path.join(__dirname, '../public')}`));
 
 // Security HTTP headers
 app.use(helmet());

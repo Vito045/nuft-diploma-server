@@ -22,7 +22,7 @@ const Chat = require('./models/chatModel');
 const PORT = process.env.PORT || 3001;
 // const PORT = 3001;
 // const PORT = 3001;
-const INDEX = '/index.html';
+const INDEX = 'index.html';
 
 // const server = http.createServer(app);
 const server = express()
