@@ -25,21 +25,21 @@ app.enable('trust proxy');
 
 // app.set('view engine', 'pug');
 // app.set('views', `${path.join(__dirname, 'views')}`);
-app.use(
-  cors({
-    origin: [
-      'http://127.0.0.1:3000',
-      'http://127.0.0.1:3001',
-      'http://127.0.0.1:3002',
-      'http://localhost:3000',
-      'http://localhost:3001',
-      'http://localhost:3002',
-    ],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: [
+//       'http://127.0.0.1:3000',
+//       'http://127.0.0.1:3001',
+//       'http://127.0.0.1:3002',
+//       'http://localhost:3000',
+//       'http://localhost:3001',
+//       'http://localhost:3002',
+//     ],
+//     credentials: true,
+//   })
+// );
 
-app.options('*', cors());
+// app.options('*', cors());
 
 
 

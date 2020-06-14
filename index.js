@@ -60,7 +60,7 @@ io.use(async (socket, next) => {
 
 // io.ori
 // io.set('origins', 'http://yourdomain.com:80');
-io.origins('http://127.0.0.1:3000');
+// io.origins('http://127.0.0.1:3000');
 
 // app.use(
 //   cors({
