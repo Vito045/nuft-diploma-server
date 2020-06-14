@@ -24,6 +24,7 @@ const PORT = process.env.PORT || 3001;
 // const PORT = 3001;
 const INDEX = 'index.html';
 
+console.log('connection?')
 // const server = http.createServer(app);
 const server = express()
   .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
