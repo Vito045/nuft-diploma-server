@@ -18,9 +18,9 @@ const cors = require('cors');
 
 const app = express();
 
-// const publicDirectoryPath = path.join(__dirname, './public');
-// app.use(express.static(publicDirectoryPath));
-app.use(express.static(__dirname));
+const publicDirectoryPath = path.join(__dirname, './public');
+app.use(express.static(publicDirectoryPath));
+// app.use(express.static(__dirname));
 
 app.enable('trust proxy');
 

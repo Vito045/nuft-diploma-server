@@ -20,8 +20,8 @@ const Chat = require('./models/chatModel');
 
 // const port = 80;
 // const PORT = 80;
-// const port = process.env.PORT || 3001;
-const PORT = process.env.PORT || 3001;
+const port = process.env.PORT || 3001;
+// const PORT = process.env.PORT || 3001;
 // const PORT = 3001;
 // const PORT = 3001;
 const INDEX = 'index.html';
@@ -35,10 +35,10 @@ const INDEX = 'index.html';
 // });
 
 console.log('connection?');
-// const server = http.createServer(app);
-const server = express()
-  // .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+const server = http.createServer(app);
+// const server = express()
+//   // .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+//   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 const io = soketio(server);
 
 const sockets = {};
@@ -610,4 +610,4 @@ io.on('connection', async (socket) => {
   delete sockets[socket.userId];
 });
 
-// server.listen(port, () => console.log('Server is up on port', port));
+server.listen(port, () => console.log('Server is up on port', port));
