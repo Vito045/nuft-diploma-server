@@ -20,25 +20,25 @@ const Chat = require('./models/chatModel');
 
 // const port = 80;
 // const PORT = 80;
-const port = process.env.PORT || 3001;
+// const port = process.env.PORT || 3001;
 const PORT = process.env.PORT || 3001;
 // const PORT = 3001;
 // const PORT = 3001;
 const INDEX = 'index.html';
 
-app.use('*', (req, res) => {
-  // res.send('sdf')
-  // res.sendFile('index.html');
-  // console.log(req.protocol + '://' + req.get('host') + req.originalUrl);
-  res.sendFile(path.join(__dirname, `index.html`));
-  // res.sendfile(INDEX, { root: {__dirname` });
-});
+// app.use('*', (req, res) => {
+//   // res.send('sdf')
+//   // res.sendFile('index.html');
+//   // console.log(req.protocol + '://' + req.get('host') + req.originalUrl);
+//   res.sendFile(path.join(__dirname, `index.html`));
+//   // res.sendfile(INDEX, { root: {__dirname` });
+// });
 
 console.log('connection?');
-const server = http.createServer(app);
-// const server = express()
-//   // .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
-//   .listen(PORT, () => console.log(`Listening on ${PORT}`));
+// const server = http.createServer(app);
+const server = express()
+  // .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+  .listen(PORT, () => console.log(`Listening on ${PORT}`));
 const io = soketio(server);
 
 const sockets = {};
@@ -610,4 +610,4 @@ io.on('connection', async (socket) => {
   delete sockets[socket.userId];
 });
 
-server.listen(port, () => console.log('Server is up on port', port));
+// server.listen(port, () => console.log('Server is up on port', port));
