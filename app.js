@@ -18,8 +18,9 @@ const cors = require('cors');
 
 const app = express();
 
-// const publicDirectoryPath = path.join(__dirname, '../public');
+// const publicDirectoryPath = path.join(__dirname, './public');
 // app.use(express.static(publicDirectoryPath));
+app.use(express.static(__dirname));
 
 app.enable('trust proxy');
 
@@ -40,9 +41,6 @@ app.enable('trust proxy');
 // );
 
 // app.options('*', cors());
-
-
-
 
 // 1. Middleware
 // Serving static files
