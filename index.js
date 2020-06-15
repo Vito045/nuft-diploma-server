@@ -588,8 +588,8 @@ io.on('connection', async (socket) => {
       }
 
       // user.chats.forEach(chat => socket.to(chat._id).emit('updateUserInChat', { chatId: chat._id, user });)
-      const u = await User.findById(user._id);
-      callback(u, { u, user });
+      // const u = await User.findById(user._id);
+      callback(user);
     } catch (err) {
       console.log(err);
     }
