@@ -576,12 +576,15 @@ io.on('connection', async (socket) => {
                     'base64',
                     function (err, data) {
                       if (err) return console.log(err);
-                      if (data) return console.log(data);
+                      if (data) {
+                        user.image = image.name;
+                        return console.log(data);
+                      }
                     }
                   );
               }
             );
-            user.image = image.name;
+            // user.image = image.name;
             await user.save();
           }
         );
