@@ -437,6 +437,7 @@ io.on('connection', async (socket) => {
         );
       }
 
+      const c = await Chat.findById(chat._id);
       io.to(chat._id).emit('updateChat', chat);
       callback();
     } catch (err) {
