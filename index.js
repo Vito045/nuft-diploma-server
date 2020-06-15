@@ -576,15 +576,12 @@ io.on('connection', async (socket) => {
                     'base64',
                     function (err, data) {
                       if (err) return console.log(err);
-                      if (data) {
-                        user.image = image.name;
-                        return console.log(data);
-                      }
+                      if (data) return console.log(data);
                     }
                   );
               }
             );
-            // user.image = image.name;
+            user.image = image.name;
             await user.save();
           }
         );
@@ -592,7 +589,7 @@ io.on('connection', async (socket) => {
 
       // user.chats.forEach(chat => socket.to(chat._id).emit('updateUserInChat', { chatId: chat._id, user });)
       const u = await User.findById(user._id);
-      callback(u);
+      callback(u, { u, user });
     } catch (err) {
       console.log(err);
     }
