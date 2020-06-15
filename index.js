@@ -403,7 +403,7 @@ io.on('connection', async (socket) => {
       const image = data.image;
       if (image) {
         await rimraf(
-          path.join(`/public/img/chats/${chat._id}`),
+          path.join(__dirname, `/public/img/chats/${chat._id}`),
           async function () {
             console.log('done');
 
@@ -552,7 +552,7 @@ io.on('connection', async (socket) => {
       const image = data.image;
       if (image) {
         await rimraf(
-          path.join(`/public/img/users/${user._id}`),
+          path.join(__dirname, `/public/img/users/${user._id}`),
           async function () {
             console.log('done');
 
@@ -564,6 +564,7 @@ io.on('connection', async (socket) => {
               path.join(__dirname, `/public/img/users/${user._id}`),
               (err, data) => {
                 if (err) console.log(err);
+                if (data) console.log(data);
                 else
                   fs.writeFile(
                     path.join(
