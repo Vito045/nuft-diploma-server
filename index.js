@@ -44,6 +44,7 @@ const io = soketio(server);
 const sockets = {};
 
 io.use(async (socket, next) => {
+  console.log(socket.handshake.query);
   if (!socket.handshake.query) return next();
   // var cookies = cookieparser.parse(socket.handshake.query);
   var cookies = socket.handshake.query;
@@ -124,6 +125,7 @@ io.on('connection', async (socket) => {
         socket.to(chat._id).emit('updateUserInChat', { chatId: chat._id, user })
       );
       sockets[socket.userId] = socket.id;
+      socket.userId = user._id;
     } catch (err) {
       console.log(err, 101);
       callback();
@@ -153,6 +155,7 @@ io.on('connection', async (socket) => {
       // user.tokens = user.tokens.concat({ token });
       // await user.save();
       // socket._id = user._id;
+      socket.userId = user._id;
       callback({ user, token });
     } catch (err) {
       console.log(err, 101);
@@ -185,6 +188,7 @@ io.on('connection', async (socket) => {
       // user.isOnline = true;
       await user.save();
       socket._id = user._id;
+      socket.userId = user._id;
       callback({ user, token });
 
       user.chats.forEach((chat) =>
@@ -542,9 +546,9 @@ io.on('connection', async (socket) => {
 
   socket.on('updateUser', async (data, callback) => {
     try {
+      console.log(socket.userId);
       const userData = { ...data };
       delete userData.image;
-
       const user = await User.findByIdAndUpdate(socket.userId, userData, {
         new: true,
       });
