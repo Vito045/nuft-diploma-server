@@ -276,6 +276,7 @@ io.on('connection', async (socket) => {
             messages: {
               author: authorId,
               message,
+              date: new Date().toUTCString(),
             },
           },
         },

@@ -27,8 +27,8 @@ const chatSchema = mongoose.Schema({
       },
       message: String,
       date: {
-        type: Number,
-        default: new Date().getTime(),
+        type: Date,
+        default: new Date().toUTCString(),
       },
     },
   ],
